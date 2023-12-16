@@ -1,11 +1,11 @@
 # List your *.h files (if you do not have them in your project then leave the variable "headers" empty):
-headers = Matrix.h
+headers = Map.h Employee.h
 
 # List your *.cpp files:
-sources = Matrix.cpp TestMatrix.cpp
+sources = TestMap.cpp
 
 # Specify name of your program:
-executable = matrix
+executable = testMap
 
 $(executable): $(headers) $(sources)
 	g++ -fsanitize=undefined -g -Wall -pedantic $(sources) -o $(executable)
@@ -16,5 +16,5 @@ clean:
 
 .PHONY: check
 check: $(executable)
-	valgrind --leak-check=full --track-origins=yes -s ./$(executable)
+	valgrind --leak-check=full --track-origins=yes ./$(executable)
 #--leak-check=full --show-leak-kinds=all

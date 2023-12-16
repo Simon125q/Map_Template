@@ -7,11 +7,21 @@ typedef Map<ID, Employee> Database; // Database of employees
 
 using namespace std;
 
+void testEmployeeExample();
+void testLibraryExample();
 void addEmployees(Database &database);
 void modifyEmployees(Database &database);
 
 int main()
 {
+	testEmployeeExample();
+	return 0;
+};
+
+void testEmployeeExample()
+{
+	cout << "Employee example" << endl;
+
 	Database database;
 	addEmployees(database);
 
@@ -21,15 +31,12 @@ int main()
 
 	cout << "Original database:" << endl
 		 << database << endl;
-	cout << "Modified database:" << endl
-		 << newDatabase << endl;
+	cout << "Modified database:" << endl << newDatabase << endl;
 
 	database = newDatabase; // Update original database
 
-	cout << "Database after the assignment:" << endl
-		 << database << endl;
-};
-
+	cout << "Database after the assignment:" << endl << database << endl;
+}
 void addEmployees(Database &database)
 {
 	database.add(761028073, Employee("Jan Kowalski", "salesman", 28));	// Add first employee: name: Jan Kowalski, position: salseman, age: 28,
