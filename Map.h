@@ -22,15 +22,11 @@ public:
     void add(K_type key, V_type value);
     V_type *find(K_type key);
     int getSize();
-    //void clear();
     void inOrderPrint(ostream &os, Node *n) const;
     Node *copy(Node *root);
-    //void postOrderClean(Node *n);
 
     friend ostream &operator<<(ostream &os, const Map<K_type, V_type> &obj)
     {
-        if (TEST)
-            cout << "operator<<" << endl;
         obj.inOrderPrint(os, obj.root);
         return os;
     };
@@ -43,7 +39,7 @@ template <typename K_type, typename V_type>
 Map<K_type, V_type>::Map(Map &other)
 {
     if (TEST)
-            cout << "copy constructor" << endl;
+        cout << "copy constructor" << endl;
     this->root = this->copy(other.root);
     this->size = other.size;
 }
@@ -98,15 +94,6 @@ int Map<K_type, V_type>::getSize()
     return this->size;
 }
 
-// template <typename K_type, typename V_type>
-// void Map<K_type, V_type>::clear()
-// {
-//     if (TEST)
-//         cout << "clear" << endl;
-//     this->postOrderClean(this->root);
-//     this->size = 0;
-// }
-
 template <typename K_type, typename V_type>
 void Map<K_type, V_type>::inOrderPrint(ostream &os, Map<K_type, V_type>::Node *n) const
 {
@@ -119,52 +106,26 @@ void Map<K_type, V_type>::inOrderPrint(ostream &os, Map<K_type, V_type>::Node *n
     this->inOrderPrint(os, n->left);
     os << n->key << "-> " << n->value << ", " << endl;
     this->inOrderPrint(os, n->right);
-} 
+}
 
 template <typename K_type, typename V_type>
 typename Map<K_type, V_type>::Node *Map<K_type, V_type>::copy(typename Map<K_type, V_type>::Node *root)
 {
     if (TEST)
         cout << "copy" << endl;
-    // base case
+
     if (root == nullptr)
     {
         return nullptr;
     }
 
-    // create a new node with the same data as the root node
     Node *root_copy = new Node(root->key, root->value);
 
-    // clone the left and right subtree
     root_copy->left = this->copy(root->left);
     root_copy->right = this->copy(root->right);
 
-    // return cloned root node
     return root_copy;
 }
-
-// PostOrder Traversal
-// template <typename K_type, typename V_type>
-// void Map<K_type, V_type>::postOrderClean(Map<K_type, V_type>::Node *node)
-// {
-//     if (TEST)
-//         cout << "post order clean" << endl;
-//     if (node == nullptr)
-//         return;
-
-//     // Traverse left subtree
-//     this->postOrderClean(node->left);
-
-//     // Traverse right subtree
-//     this->postOrderClean(node->right);
-
-//     // Visit node
-//     cout << "delete Node" << endl;
-//     node->right = nullptr;
-//     node->left = nullptr;
-
-//     delete node;
-// }
 
 // Node -----------------------------------------------
 
