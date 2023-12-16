@@ -29,13 +29,13 @@ void testEmployeeExample()
 	newDatabase.add(830505432, Employee("Ewa Nowak", "charwoman", 43)); // Add fourth employee
 	modifyEmployees(newDatabase);
 
-	cout << "Original database:" << endl
+	cout << "Original database: (size = " << database.getSize() << ")" << endl
 		 << database << endl;
-	cout << "Modified database:" << endl << newDatabase << endl;
+	cout << "Modified database: (size = " << newDatabase.getSize() << ")" << endl << newDatabase << endl;
 
 	database = newDatabase; // Update original database
 
-	cout << "Database after the assignment:" << endl << database << endl;
+	cout << "Database after the assignment: (size = " << database.getSize() << ")" << endl << database << endl;
 }
 void addEmployees(Database &database)
 {
