@@ -1,5 +1,5 @@
 # List your *.h files (if you do not have them in your project then leave the variable "headers" empty):
-headers = Map.h Employee.h
+headers = Map.h Employee.h BookCard.h
 
 # List your *.cpp files:
 sources = TestMap.cpp
